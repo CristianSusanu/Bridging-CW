@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="btn btn-danger my-2 my-sm-0" href="{% url 'add-post' %}">Add Post</a>
+<div class="col-md-10">
+	<ul>
+		{% for post in object_list %}
+			<div class="card mb-4 mt-4 border-secondary">
+				<div class="card-body">
+					<h4 class="card-title" >{{ post.title }}</h4>
+					<p class="card-text">{{ post.text|truncatechars:120 }}</p>
+				<br/><small>
+					<a href="{% url 'edit-post' post.pk %}" class="btn btn-outline-success btn-sm">Edit</a>
+					<a href="{% url 'delete-post' post.pk %}" class="btn btn-outline-secondary btn-sm">Delete</a>
+					<a href="{% url 'post-details' post.pk %}" class="btn btn-outline-primary btn-sm">Read More &rarr;</a>
+				</small></div>
+				<small><div class="card-footer text-muted">
+					By: Cristian Susanu - Posted on {{ post.post_date }}
+				</div></small>
+			</div>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

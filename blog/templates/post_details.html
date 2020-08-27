@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} {{ post.title }} {% endblock %}
+{% block content %}
+	<div class="col-md-8">
+		<div class="card mb-4 mt-4 border-secondary">
+			<div class="card-body">
+				<h3 class="card-title">{{ post.title }}</h3>
+				<hr>
+				<p class="card-text">{{ post.text|linebreaks }}</p>
+			</div>
+			<div class="card-footer text-muted">
+				By: Cristian Susanu - Posted On: {{ post.post_date }}
+			</div>
+		</div>
+		<a href="{% url 'home' %}" class="btn btn-outline-primary btn-sm">Back To Main Page</a>
+		<a href="{% url 'edit-post' post.pk %}"  class="btn btn-outline-success btn-sm">Edit</a>
+		<a href="{% url 'delete-post' post.pk %}"  class="btn btn-outline-secondary btn-sm">Delete</a>
+	</div>
+{% endblock %}

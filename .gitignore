@@ -1,0 +1,7 @@
+*.pyc
+*~
+/.vscode
+__pycache__
+virtualenv
+/static
+.DS_Store
