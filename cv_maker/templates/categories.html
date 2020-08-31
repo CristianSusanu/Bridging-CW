@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Categories{% endblock %}
+{% block content %}
+
+{% if category_posts %}
+	<h1 class="font-italic">{{ cats }} Category</h1>
+	<ul>
+	{% for post in category_posts %}
+		<a href="{% url 'edit_cv_post' post.pk %}">(Edit)</a>
+		<a href="{% url 'delete_cv_post' post.pk %}">(Delete)</a>
+		<h5>{{ post.text|linebreaks }}</h5>
+	{% endfor %}
+	</ul>
+{% else %}
+	<h2>Sorry, this page does not exit. Please enter a valid Url.</h2>
+{% endif %}
+<br/>
+<a href="{% url 'cv_home' %}" class="btn btn-outline-primary btn-sm">Back To Main Page</a>
+{% endblock %}

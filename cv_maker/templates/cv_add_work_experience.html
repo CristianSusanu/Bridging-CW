@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Add Work Experience{% endblock %}
+{% block content %}
+
+<h1 class="text-center font-weight-bol">Work Experience</h1><br/>
+<h4>Please provide any relevant work experience.</h4>
+<br/>
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<a href="{% url 'cv_home' %}" class="btn btn-success">Back To Main Page</a>
+	<button class="btn btn-success">Post</button>
+
+{% endblock %}

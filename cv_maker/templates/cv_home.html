@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block title %}CV{% endblock %}
 {% block content %}
+<div class="text-center">
+	<a href="{% url 'add_personal_details' %}" class="btn btn-secondary btn-sm">Add Personal Details</a>
+	<a href="{% url 'add_career_profile' %}" class="btn btn-secondary btn-sm">Add Career Profile</a>
+	<a href="{% url 'add_work_experience' %}" class="btn btn-secondary btn-sm">Add Work Experience</a>
+	<a href="{% url 'add_education' %}" class="btn btn-secondary btn-sm">Add Education Details</a>
+	<a href="{% url 'add_skills' %}" class="btn btn-secondary btn-sm">Add Skills</a>
+</div>
+	<hr><br/>
 
-<h1>Post</h1>
-
-<ul>
-	{% for post in object_list %}
-		<li>
-			{{ post.title }}<br/>
-			{{ post.text }}<br/>
-			Category: {{ post.category }}
-		</li>
-	{% endfor %}
-</ul>
+{% for post in object_list %}
+	<div class="text-left">
+		<h2><a class="font-italic" href="{% url 'category' post.category %}">{{ post.category }}</a></h2>
+			<a href="{% url 'edit_cv_post' post.pk %}">(Edit)</a>
+			<a href="{% url 'delete_cv_post' post.pk %}">(Delete)</a>
+	<h4>{{ post.text|linebreaks }}</h4>
+</div>
+<hr>
+{% endfor %}
 {% endblock %}
